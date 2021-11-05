@@ -5,6 +5,7 @@ self.addEventListener('push', function (e) {
         body: bodyText,
         icon: 'images/ArrowLeft.png',
         vibrate: [1000, 500, 1000],
+        image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/DotOnline_gTLD_logo.svg/1200px-DotOnline_gTLD_logo.svg.png',//600px by 400px
         data: {
             dateOfArrival: Date.now(),
             primaryKey: '2'
@@ -16,7 +17,7 @@ self.addEventListener('push', function (e) {
             },
             {
                 action: 'close', title: 'Close',
-                icon: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/DotOnline_gTLD_logo.svg/1200px-DotOnline_gTLD_logo.svg.png'
+                icon: 'images/ArrowLeft.png'
             },
         ]
     };
