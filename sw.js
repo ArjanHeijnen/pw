@@ -1,5 +1,6 @@
 self.addEventListener('push', function (e) {
-    console.log(e.type);
+    console.log("e.type");
+    console.log(e);
     var options = {
         body: 'push!!',
         icon: 'images/ArrowLeft.png',
