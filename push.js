@@ -10,5 +10,10 @@ let vapidkeyes = //push.generateVAPIDKeys();
 push.setVapidDetails('mailto:arjan.heijnen@student.nhlstenden.com', vapidkeyes.publicKey, vapidkeyes.privateKey);//idk why using my own email, in example a fake email is used
 
 //get sub data from database or something
-let sub = {"endpoint":"https://fcm.googleapis.com/fcm/send/cR29n8_e_ds:APA91bHo2bisoJkdkmbrEIRrS-nC7F2K8AsBPBGSxfZXtQtU9M9TZ3vQ8itjbY4eAMisF--_dDrtM5E5BaiqHRVvATBWXfHYae1B1oyXqvT_RUxiX-a0M5E-f_3NJOFswmTrrkJge3gP","expirationTime":null,"keys":{"p256dh":"BMATtNS8kS6UxJ7IC2lWoOAGlArj81B3lEv-163hPgeLRlvirwDB0IXGlPXuqApqEivjLW2itOF6wBpZoxwsV2w","auth":"_6qjEr2buFnw3zLzfEl9Qg"}}
+let sub = {"endpoint":"https://fcm.googleapis.com/fcm/send/esFxAY7optk:APA91bFH7qgtygJUrFvFeh9ZV_d1R4HOELJ9vbsWiDD_eXZgYotiKF_bb6BrE_t7mbJ0avUoULNt5QVjmb85fEB4PaKZPuFWSPHVOZx7zsSgvqSoCmF5y3i2_UkET1u7Y1yS7ELdVOk8","expirationTime":null,"keys":{"p256dh":"BKdoo7ewmQksrle6lLZGtw23_c8UZOHcrie7EUVxaQNRDn4fyp0Bi7gROxidvFlPOHuHfzXZZ3dRfXo6iClZ5yg","auth":"ChfUDUjoLAK0f_-UNgYNHA"}}
+
+
+
+
+
 push.sendNotification(sub, 'test message');

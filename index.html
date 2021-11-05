@@ -23,10 +23,11 @@
             let sw = await navigator.serviceWorker.ready;
             navigator.serviceWorker.getRegistrations().then(function (registrations) {
                 for (let registration of registrations) {
-                    registration.update()
+                    registration.update();
+                    registration.skipWaiting();
                     console.log("updated");
                 }
-            })
+            })  
             let push = await sw.pushManager.subscribe({
                 userVisibleOnly: true,
                 applicationServerKey: 'BNRro0yvR4UoTCvjZr9njT28AMyfUvSuPtCF_cLlN-wm5KT7GfCEPjdOdcKc9-wYUhJkeSIVFryPb34Ts8D2R-0'//public key
