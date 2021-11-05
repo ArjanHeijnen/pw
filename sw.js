@@ -1,6 +1,8 @@
+
+const config = require('./config.json');
 self.addEventListener('push', function (e) {
     console.log("e.type");
-    console.log(e.data.nameThis);
+    console.log(config.Body);
     let randomText = "text" + Math.random();
     var options = {
         body: randomText,
