@@ -1,8 +1,8 @@
 self.addEventListener('push', function (e) {
-    console.log("e.type");
-    let randomText = getdata();
+    console.log("push initiated");
+    let bodyText = await getdata();
     var options = {
-        body: randomText,
+        body: bodyText,
         icon: 'images/ArrowLeft.png',
         vibrate: [1000, 500, 1000],
         data: {
@@ -43,7 +43,8 @@ self.addEventListener('notificationclick', event => {
     }
 })
 
-function getdata(){
+async function getdata() {
+    let data = "oke";
 
-    return "oke";
+    return data;
 }
