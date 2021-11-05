@@ -1,7 +1,8 @@
 
-const config = require('./config.json');
+
 self.addEventListener('push', function (e) {
     console.log("e.type");
+    const config = require('./config.json');
     console.log(config.Body);
     let randomText = "text" + Math.random();
     var options = {
