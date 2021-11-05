@@ -16,7 +16,7 @@ self.addEventListener('push', function (e) {
             },
             {
                 action: 'close', title: 'Close',
-                icon: 'images/ArrowLeft.png'
+                icon: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/DotOnline_gTLD_logo.svg/1200px-DotOnline_gTLD_logo.svg.png'
             },
         ]
     };
