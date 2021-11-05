@@ -1,6 +1,6 @@
 self.addEventListener('push', function (e) {
     console.log("push initiated");
-    let bodyText = await getdata();
+    let bodyText = getdata();
     var options = {
         body: bodyText,
         icon: 'images/ArrowLeft.png',
@@ -43,7 +43,7 @@ self.addEventListener('notificationclick', event => {
     }
 })
 
-async function getdata() {
+function getdata() {
     let data = "oke2";
 
     return data;
