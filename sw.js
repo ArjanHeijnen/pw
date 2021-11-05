@@ -24,4 +24,19 @@ self.addEventListener('push', function (e) {
     );
 });
 
-
+self.addEventListener('notificationclick', event => {
+    const notification = event.notification;
+    const action = event.action;
+    const primaryKey = notification.data.primaryKey;
+    console.log('Notification: ', primaryKey);
+    if (action === 'close') {
+        console.log('Close notification');
+        notification.close();
+    } else if (action === 'Somthingelse') {
+        console.log('explore');
+        clients.openWindow('https://www.sdinternational.nl/');
+    } else {
+        console.log('Go notification');
+        clients.openWindow('http://imbuildings.com');
+    }
+})
