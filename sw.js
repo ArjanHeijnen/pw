@@ -1,8 +1,9 @@
 self.addEventListener('push', function (e) {
     console.log("e.type");
-    console.log(e);
+    console.log(e.data.nameThis);
+    let randomText = "text" + Math.random();
     var options = {
-        body: 'push!!',
+        body: randomText,
         icon: 'images/ArrowLeft.png',
         vibrate: [1000, 500, 1000],
         data: {
