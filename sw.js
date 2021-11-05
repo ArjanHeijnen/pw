@@ -5,7 +5,7 @@ self.addEventListener('push', function (e) {
         body: bodyText,
         icon: 'images/ArrowLeft.png',
         vibrate: [1000, 500, 1000],
-        image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/DotOnline_gTLD_logo.svg/1200px-DotOnline_gTLD_logo.svg.png',//600px by 400px
+        image: 'https://www.imbuildings.com/wp-content/uploads/brizy/319/assets/images/iW=311&iH=73&oX=0&oY=0&cW=311&cH=73/logoheader.png',//600px by 400px
         data: {
             dateOfArrival: Date.now(),
             primaryKey: '2'
@@ -13,7 +13,7 @@ self.addEventListener('push', function (e) {
         actions: [
             {
                 action: 'explore', title: 'Explore',
-                icon: 'images/ArrowLeft.png'
+                icon: 'https://www.imbuildings.com/wp-content/uploads/brizy/319/assets/images/iW=404&iH=441&oX=0&oY=0&cW=404&cH=441/solution.png'
             },
             {
                 action: 'close', title: 'Close',
