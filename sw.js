@@ -44,7 +44,7 @@ self.addEventListener('notificationclick', event => {
 })
 
 async function getdata() {
-    let data = "oke";
+    let data = "oke2";
 
     return data;
 }
