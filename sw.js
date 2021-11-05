@@ -1,5 +1,5 @@
 self.addEventListener('push', function (e) {
-    console.log(e);
+    console.log(e.type);
     var options = {
         body: 'push!!',
         icon: 'images/ArrowLeft.png',
@@ -10,7 +10,7 @@ self.addEventListener('push', function (e) {
         },
         actions: [
             {
-                action: 'explore', title: 'Explore this new world',
+                action: 'explore', title: 'Explore',
                 icon: 'images/ArrowLeft.png'
             },
             {
