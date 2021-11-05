@@ -1,4 +1,5 @@
 self.addEventListener('push', function (e) {
+    console.log(e);
     var options = {
         body: 'push!!',
         icon: 'images/ArrowLeft.png',
@@ -32,7 +33,7 @@ self.addEventListener('notificationclick', event => {
     if (action === 'close') {
         console.log('Close notification');
         notification.close();
-    } else if (action === 'Somthingelse') {
+    } else if (action === 'explore') {
         console.log('explore');
         clients.openWindow('https://www.sdinternational.nl/');
     } else {
