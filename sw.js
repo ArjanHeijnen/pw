@@ -1,18 +1,6 @@
-
-
 self.addEventListener('push', function (e) {
     console.log("e.type");
-    e.waitUntil(
-        caches.open("static").then(cache => {
-            console.log('cache');
-            return cache.addAll([
-                './',
-                './config.json']);
-        })
-    )
-    const config = require('./config.json');
-    console.log(config.Body);
-    let randomText = "text" + Math.random();
+    let randomText = getdata();
     var options = {
         body: randomText,
         icon: 'images/ArrowLeft.png',
@@ -54,3 +42,8 @@ self.addEventListener('notificationclick', event => {
         clients.openWindow('http://imbuildings.com');
     }
 })
+
+function getdata(){
+
+    return "oke";
+}
