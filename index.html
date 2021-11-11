@@ -15,6 +15,9 @@
     <button onclick="subscribe()">
         subscribe
     </button>
+    <button id="btnAdd">
+        download
+    </button>
     <p id="pushID">here!</p>
     <script>
         addEventListener('load', async () => {
@@ -49,6 +52,7 @@
         }
 
         let deferredPrompt;
+        let btnAdd = document.getElementById('btnAdd')
         window.addEventListener('beforeinstallprompt', e => {
             //prevent chrome 67 and earlier from automatically 
             // showing prompt
@@ -69,7 +73,6 @@
                 })
             })
         })
-
 
 
         window.addEventListener('appinstalled', (evt) => {
