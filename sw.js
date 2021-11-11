@@ -36,14 +36,7 @@ self.addEventListener('notificationclick', event => {
         console.log('Close notification');
         notification.close();
     } else if (action === 'Somthingelse') {
-        console.log('Somthingelse');
-        deferredPrompt.prompt();
-        deferredPrompt.userChoice.then((choiceResult) => {
-            if (choiceResult.outcome === 'accepted') {
-                console.log('user accepted a2hs prompt');
-            }
-            deferredPrompt = null;
-        })
+        console.log('something');        
     } else if (action === 'explore') {
         console.log('explore');
        
