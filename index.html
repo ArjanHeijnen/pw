@@ -29,7 +29,7 @@
         addEventListener('load', async () => {
             //a service worker is needed
             let sw = await navigator.serviceWorker.register('./sw.js')
-            console.log(sw);            
+            console.log(sw);
             console.log('has sw');
             navigator.serviceWorker.getRegistrations().then(function (registrations) {
                 for (let registration of registrations) {
@@ -56,6 +56,12 @@
             // when is needed let server find this data for the user and let it send messages
             document.getElementById("pushID").innerHTML = JSON.stringify(push);
             console.log(JSON.stringify(push));
+        }
+
+        window.addEventListener('offline', () => { console.log('Became offline'); displayOffline() });//---
+        
+        function displayOffline() {//---
+            alert('u are ofline');
         }
 
         //for the download of the PWA
