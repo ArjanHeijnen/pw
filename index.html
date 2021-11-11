@@ -73,6 +73,7 @@
             //stash the event 
             deferredPrompt = e;
             //update UI Notify the user they can add to homescreen 
+            hideMyInstallPromotion();
             btnAdd.style.display = 'block';
             // if (confirm('There is an PWA for this site, do you with to download it?')) {
             //     // Save it!
@@ -115,6 +116,9 @@
                     reg.showNotification('Notification SDI', options);
                 });
             }
+        }
+        function hideMyInstallPromotion(){
+            document.getElementById('btnAdd').hidden = 'hidden'
         }
     </script>
 </body>
