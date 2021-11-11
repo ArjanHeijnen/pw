@@ -19,23 +19,16 @@
     <script>
         addEventListener('load', async () => {
             let sw = await navigator.serviceWorker.register('./sw.js')
-            console.log(sw);
-        });
-        if ('serviceWorker' in navigator) {
-            console.log('has sw');
-            navigator.serviceWorker.register('/sw.js', {
-                scope: '/'
-            })
+            console.log(sw); console.log('has sw');
+
             navigator.serviceWorker.getRegistrations().then(function (registrations) {
                 for (let registration of registrations) {
                     registration.update()
                     console.log("updated");
                 }
             })
-            //aardig zeker dat het tot hier is            
-        } else {
-            console.log('has no sw');
-        }
+        });
+
         async function subscribe() {
             let sw = await navigator.serviceWorker.ready;
             navigator.serviceWorker.getRegistrations().then(function (registrations) {
