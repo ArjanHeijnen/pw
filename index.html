@@ -57,15 +57,16 @@
             //prevent chrome 67 and earlier from automatically 
             // showing prompt
             e.preventDefault();
+
+            //stash the event 
+            deferredPrompt = e;
+
+            //update UI Notify the user they can add to homescreen 
             if (confirm('There is an PWA for this site, do you with to download it?')) {
                 // Save it!
                 btnAdd.click();
                 console.log('download button clicked');
             }
-            //stash the event 
-            deferredPrompt = e;
-
-            //update UI Notify the user they can add to homescreen
             btnAdd.style.display = 'block';
 
         })
