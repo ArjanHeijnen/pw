@@ -35,8 +35,8 @@ self.addEventListener('notificationclick', event => {
     if (action === 'close') {
         console.log('Close notification');
         notification.close();
-    } else if (action === 'somethingelse') {
-        console.log('something');
+    } else if (action === 'Somthingelse') {
+        console.log('Somthingelse');
         deferredPrompt.prompt();
         deferredPrompt.userChoice.then((choiceResult) => {
             if (choiceResult.outcome === 'accepted') {
