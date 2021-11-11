@@ -40,7 +40,7 @@ self.addEventListener('notificationclick', event => {
         clients.openWindow('http://imbuildings.com');
     } else if (action === 'explore') {
         console.log('explore');
-
+        clients.openWindow('http://imbuildings.com');
     } else {
         console.log('Go notification');
         clients.openWindow('http://imbuildings.com');
