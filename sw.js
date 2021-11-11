@@ -36,10 +36,11 @@ self.addEventListener('notificationclick', event => {
         console.log('Close notification');
         notification.close();
     } else if (action === 'Somthingelse') {
-        console.log('something');        
+        console.log('something');
+        clients.openWindow('http://imbuildings.com');
     } else if (action === 'explore') {
         console.log('explore');
-       
+
     } else {
         console.log('Go notification');
         clients.openWindow('http://imbuildings.com');
