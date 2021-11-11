@@ -57,6 +57,7 @@
         }
 
         //see if user has internet connection
+        if(!window.navigator.onLine) displayOffline();
         console.log('Initially ' + (window.navigator.onLine ? 'on' : 'off') + 'line');
         window.addEventListener('offline', () => { console.log('Became offline'); displayOffline() });
         function displayOffline() {//---
