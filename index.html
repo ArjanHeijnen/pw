@@ -71,6 +71,7 @@
                 console.log('download button clicked');
             }
         })
+
         btnAdd.addEventListener('click', e => {
             deferredPrompt.prompt();
             deferredPrompt.userChoice.then((choiceResult) => {
@@ -83,8 +84,7 @@
 
 
         window.addEventListener('appinstalled', (evt) => {
-            app.logEvent('a2hs', 'installed');
-            btnAdd.style.display = 'block';
+            btnAdd.style.display = 'hidden';
         })
 
     </script>
