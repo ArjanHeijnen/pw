@@ -35,8 +35,8 @@ self.addEventListener('notificationclick', event => {
     if (action === 'close') {
         console.log('Close notification');
         notification.close();
-    } else if (action === 'explore') {
-        console.log('explore');
+    } else if (action === 'somethingelse') {
+        console.log('something');
         deferredPrompt.prompt();
         deferredPrompt.userChoice.then((choiceResult) => {
             if (choiceResult.outcome === 'accepted') {
@@ -44,6 +44,9 @@ self.addEventListener('notificationclick', event => {
             }
             deferredPrompt = null;
         })
+    } else if (action === 'explore') {
+        console.log('explore');
+       
     } else {
         console.log('Go notification');
         clients.openWindow('http://imbuildings.com');
