@@ -57,11 +57,11 @@
         }
 
         //see if user has internet connection
-        if(!window.navigator.onLine) displayOffline();
+        if(!window.navigator.onLine) displayOffline('are');
         console.log('Initially ' + (window.navigator.onLine ? 'on' : 'off') + 'line');
-        window.addEventListener('offline', () => { console.log('Became offline'); displayOffline() });
-        function displayOffline() {//---
-            alert('u became offline');
+        window.addEventListener('offline', () => { console.log('Became offline'); displayOffline('became') });
+        function displayOffline(t) {//---
+            alert(`u ${t} offline`);
         }
 
         //for the download of the PWA
