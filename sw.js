@@ -55,14 +55,7 @@ self.addEventListener('install', e => {
         caches.open("static").then(cache => {
             console.log('cache');
             return cache.addAll([
-                './',
-                '/icons/manifest-icon-192.maskable.png',
-                '/icons/manifest-icon-512.maskable.png',
-                '/images/ArrowLeft.png',
-                'manifest.json',
-                'favicon.ico',
-                'index.html',,
-                'sw.js']);
+                './']);
         })  
     )
 });

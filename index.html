@@ -19,7 +19,8 @@
     <script>
         addEventListener('load', async () => {
             let sw = await navigator.serviceWorker.register('./sw.js')
-            console.log(sw); console.log('has sw');
+            console.log(sw); 
+            console.log('has sw');
 
             navigator.serviceWorker.getRegistrations().then(function (registrations) {
                 for (let registration of registrations) {
