@@ -24,6 +24,14 @@
     </button>
     <p id="pushID">here!</p>
     <script>
+        //see if user has internet connection
+        if (!window.navigator.onLine) displayOffline('are');
+        console.log('Initially ' + (window.navigator.onLine ? 'on' : 'off') + 'line');
+        window.addEventListener('offline', () => { console.log('Became offline'); displayOffline('became') });
+        function displayOffline(t) {//---
+            alert(`u ${t} offline`);
+        }
+
         addEventListener('load', async () => {
             //a service worker is needed
             let sw = await navigator.serviceWorker.register('./sw.js')
@@ -54,14 +62,6 @@
             // when is needed let server find this data for the user and let it send messages
             document.getElementById("pushID").innerHTML = JSON.stringify(push);
             console.log(JSON.stringify(push));
-        }
-
-        //see if user has internet connection
-        if(!window.navigator.onLine) displayOffline('are');
-        console.log('Initially ' + (window.navigator.onLine ? 'on' : 'off') + 'line');
-        window.addEventListener('offline', () => { console.log('Became offline'); displayOffline('became') });
-        function displayOffline(t) {//---
-            alert(`u ${t} offline`);
         }
 
         //for the download of the PWA
