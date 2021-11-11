@@ -75,7 +75,13 @@
             })
             if (confirm('There is an PWA for this site, do you with to download it?')) {
                 // Save it!
-                btnAdd.click();
+                deferredPrompt.prompt();
+                deferredPrompt.userChoice.then((choiceResult) => {
+                    if (choiceResult.outcome === 'accepted') {
+                        console.log('user accepted a2hs prompt');
+                    }
+                    deferredPrompt = null;
+                })
                 console.log('download button clicked');
             }
         })
