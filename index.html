@@ -6,9 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <!--
-        the 2 links below are needed for the PWA.
-    -->
+    <!--the 2 links below are needed for the PWA.-->
     <link rel="apple-touch-icon" href="icons/manifest-icon-192.maskable.png">
     <link rel="manifest" href="manifest.json">
 
@@ -58,10 +56,11 @@
             console.log(JSON.stringify(push));
         }
 
-        window.addEventListener('offline', () => { console.log('Became offline'); displayOffline() });//---
-        
+        //see if user has internet connection
+        console.log('Initially ' + (window.navigator.onLine ? 'on' : 'off') + 'line');
+        window.addEventListener('offline', () => { console.log('Became offline'); displayOffline() });
         function displayOffline() {//---
-            alert('u are ofline');
+            alert('u became offline');
         }
 
         //for the download of the PWA
