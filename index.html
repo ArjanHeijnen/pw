@@ -47,37 +47,35 @@
             document.getElementById("pushID").innerHTML = JSON.stringify(push);
             console.log(JSON.stringify(push));
         }
-        const fireAddToHomeScreenImpression = event => {
-            fireTracking("Add to homescreen shown");
-            //will not work for chrome, untill fixed
-            event.userChoice.then(choiceResult => {
-                fireTracking(`User clicked ${choiceResult}`);
-            });
-            //This is to prevent `beforeinstallprompt` event that triggers again on `Add` or `Cancel` click
-            window.removeEventListener(
-                "beforeinstallprompt",
-                fireAddToHomeScreenImpression
-            );
-        };
-        window.addEventListener("beforeinstallprompt", fireAddToHomeScreenImpression);
 
-        //Track web app install by user
-        window.addEventListener("appinstalled", event => {
-            fireTracking("PWA app installed by user!!! Hurray");
-        });
+        let deferredPrompt;
+        window.addEventListener('beforeinstallprompt', e => {
+            //prevent chrome 67 and earlier from automatically 
+            // showing prompt
+            e.preventDefault();
 
-        //Track from where your web app has been opened/browsed
-        window.addEventListener("load", () => {
-            let trackText;
-            if (navigator && navigator.standalone) {
-                trackText = "Launched: Installed (iOS)";
-            } else if (matchMedia("(display-mode: standalone)").matches) {
-                trackText = "Launched: Installed";
-            } else {
-                trackText = "Launched: Browser Tab";
-            }
-            fireTracking(track);
-        });
+            //stash the event 
+            deferredPrompt = e;
+
+            //update UI Notify the user they can add to homescreen
+            btnAdd.style.display = 'block';
+
+        })
+
+        btnAdd.addEventListener('click', e => {
+            deferredPrompt.prompt();
+            deferredPrompt.userChoice.then((choiceResult) => {
+                if (choiceResult.outcome === 'accepted') {
+                    console.log('user accepted a2hs prompt');
+                }
+                deferredPrompt = null;
+            })
+        })
+
+        window.addEventListener('appinstalled', (evt) => {
+            app.logEvent('a2hs', 'installed');
+        })
+
     </script>
 </body>
 
