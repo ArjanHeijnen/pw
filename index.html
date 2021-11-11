@@ -57,7 +57,7 @@
             //prevent chrome 67 and earlier from automatically 
             // showing prompt
             e.preventDefault();
-
+            alert('not installed');
             //stash the event 
             deferredPrompt = e;
 
@@ -77,6 +77,7 @@
 
         window.addEventListener('appinstalled', (evt) => {
             app.logEvent('a2hs', 'installed');
+            btnAdd.style.display = 'block';
         })
 
     </script>
