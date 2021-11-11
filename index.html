@@ -56,30 +56,29 @@
         window.addEventListener('beforeinstallprompt', e => {
             //prevent chrome 67 and earlier from automatically 
             // showing prompt
-            e.preventDefault(); 
-            if (confirm('Are you sure you want to save this thing into the database?')) {
+            e.preventDefault();
+            if (confirm('There is an PWA for this site, do you with to download it?')) {
                 // Save it!
-                console.log('Thing was saved to the database.');
-            } else {
-                // Do nothing!
-                console.log('Thing was not saved to the database.');
+                btnAdd.click();
+                console.log('download button clicked');
             }
             //stash the event 
             deferredPrompt = e;
 
             //update UI Notify the user they can add to homescreen
             btnAdd.style.display = 'block';
-            btnAdd.addEventListener('click', e => {
-                deferredPrompt.prompt();
-                deferredPrompt.userChoice.then((choiceResult) => {
-                    if (choiceResult.outcome === 'accepted') {
-                        console.log('user accepted a2hs prompt');
-                    }
-                    deferredPrompt = null;
-                })
-            })
+
         })
 
+        btnAdd.addEventListener('click', e => {
+            deferredPrompt.prompt();
+            deferredPrompt.userChoice.then((choiceResult) => {
+                if (choiceResult.outcome === 'accepted') {
+                    console.log('user accepted a2hs prompt');
+                }
+                deferredPrompt = null;
+            })
+        })
 
         window.addEventListener('appinstalled', (evt) => {
             app.logEvent('a2hs', 'installed');
