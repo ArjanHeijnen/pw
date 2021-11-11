@@ -6,6 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <!--
+        the 2 links below are needed for the PWA.
+    -->
     <link rel="apple-touch-icon" href="icons/manifest-icon-192.maskable.png">
     <link rel="manifest" href="manifest.json">
 
@@ -24,8 +27,9 @@
     <p id="pushID">here!</p>
     <script>
         addEventListener('load', async () => {
+            //a service worker is needed
             let sw = await navigator.serviceWorker.register('./sw.js')
-            console.log(sw);
+            console.log(sw);            
             console.log('has sw');
             navigator.serviceWorker.getRegistrations().then(function (registrations) {
                 for (let registration of registrations) {
@@ -35,7 +39,7 @@
             })
         });
 
-        async function subscribe() {
+        async function subscribe() {//for the node push.js
             let sw = await navigator.serviceWorker.ready;
             navigator.serviceWorker.getRegistrations().then(function (registrations) {
                 for (let registration of registrations) {
@@ -43,7 +47,7 @@
                     console.log("updated");
                 }
             })
-            let push = await sw.pushManager.subscribe({
+            let push = await sw.pushManager.subscribe({//for the node push.js
                 userVisibleOnly: true,
                 applicationServerKey: 'BNRro0yvR4UoTCvjZr9njT28AMyfUvSuPtCF_cLlN-wm5KT7GfCEPjdOdcKc9-wYUhJkeSIVFryPb34Ts8D2R-0'//public key
             })
@@ -54,20 +58,17 @@
             console.log(JSON.stringify(push));
         }
 
+        //for the download of the PWA
         let deferredPrompt;
         let btnAdd = document.getElementById('btnAdd')
         window.addEventListener('beforeinstallprompt', e => {
             //prevent chrome 67 and earlier from automatically 
             // showing prompt
             e.preventDefault();
-
             //stash the event 
             deferredPrompt = e;
-
             //update UI Notify the user they can add to homescreen 
-
             btnAdd.style.display = 'block';
-
             // if (confirm('There is an PWA for this site, do you with to download it?')) {
             //     // Save it!
             //     // cant do btn.click() want dat moet gebruiker persee doen?    
@@ -76,6 +77,7 @@
             // }
         })
 
+        //PWA install button action
         btnAdd.addEventListener('click', e => {
             deferredPrompt.prompt();
             deferredPrompt.userChoice.then((choiceResult) => {
@@ -86,11 +88,12 @@
             })
         })
 
-
+        //if app is installed =>
         window.addEventListener('appinstalled', (evt) => {
-            btnAdd.style.display = 'hidden';
+            btnAdd.style.display = 'block';
         })
 
+        //simple notification
         function displayNotification2() {
             if (Notification.permission === "granted") {
                 navigator.serviceWorker.getRegistration().then(reg => {

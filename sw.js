@@ -60,7 +60,9 @@ self.addEventListener('install', e => {
         caches.open("static").then(cache => {
             console.log('cache');
             return cache.addAll([
-                './']);
+                './',
+                'index.html'
+            ]);//puts everything in the cashe
         })
     )
 });
