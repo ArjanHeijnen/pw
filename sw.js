@@ -56,18 +56,13 @@ self.addEventListener('install', e => {
             console.log('cache');
             return cache.addAll([
                 './',
-                'index.js',
-                'ArrowRight.png',
                 '/icons/manifest-icon-192.maskable.png',
                 '/icons/manifest-icon-512.maskable.png',
                 '/images/ArrowLeft.png',
                 'manifest.json',
                 'favicon.ico',
-                'index.html',
-                'logoheader.png',
-                'second.html',
-                'sw.js',
-                'Uitzicht.jpg']);
+                'index.html',,
+                'sw.js']);
         })  
     )
 });
