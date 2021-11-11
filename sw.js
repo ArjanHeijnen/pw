@@ -71,7 +71,9 @@ self.addEventListener('fetch', e => {
     console.log(`intercepting ${e.request.url}`);
     e.respondWith(
         caches.match(e.request).then(response => {
-            return response || fetch(e.request);
+            if (window.navigator.onLine) {
+                return response || fetch(e.request);
+            }
         })
     )
 })
