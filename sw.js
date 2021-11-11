@@ -76,14 +76,3 @@ self.addEventListener('fetch', e => {
         })
     )
 })
-
-
-btnAdd.addEventListener('click', e => {
-    deferredPrompt.prompt();
-    deferredPrompt.userChoice.then((choiceResult) => {
-        if (choiceResult.outcome === 'accepted') {
-            console.log('user accepted a2hs prompt');
-        }
-        deferredPrompt = null;
-    })
-})
