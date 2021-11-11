@@ -15,6 +15,8 @@
     <button onclick="subscribe()">
         subscribe
     </button>
+    <button onclick="displayNotification2()"
+        style="margin-bottom: 20px;width:  100%;border-radius: 5px; height: 50px;">Get displayNotification</button>
     <button id="btnAdd">
         download
     </button>
@@ -65,11 +67,12 @@
 
             btnAdd.style.display = 'block';
 
-            if (confirm('There is an PWA for this site, do you with to download it?')) {
-                // Save it!
-                // cant do btn.click() want dat moet gebruiker persee doen?               
-                console.log('download button clicked');
-            }
+            // if (confirm('There is an PWA for this site, do you with to download it?')) {
+            //     // Save it!
+            //     // cant do btn.click() want dat moet gebruiker persee doen?    
+            //     //  do een zoom op de button ofzo?           
+            //     console.log('download button clicked');
+            // }
         })
 
         btnAdd.addEventListener('click', e => {
@@ -87,6 +90,23 @@
             btnAdd.style.display = 'hidden';
         })
 
+        function displayNotification2() {
+            if (Notification.permission === "granted") {
+                navigator.serviceWorker.getRegistration().then(reg => {
+                    const options = {
+                        body: "Notification 2 body",
+                        icon: "images/ArrowLeft.png",
+                        vibrate: [100, 50, 100],
+                        data: { primaryKey: 2 },
+                        actions: [
+                            { action: 'Somthingelse', title: 'Go to site', icon: 'images/ArrowLeft.png' },
+                            { action: 'close', title: 'No thank u', icon: 'ArrowRight.png' }
+                        ]
+                    }
+                    reg.showNotification('Notification SDI', options);
+                });
+            }
+        }
     </script>
 </body>
 
