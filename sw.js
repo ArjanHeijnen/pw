@@ -37,7 +37,13 @@ self.addEventListener('notificationclick', event => {
         notification.close();
     } else if (action === 'explore') {
         console.log('explore');
-        clients.openWindow('https://www.sdinternational.nl/');
+        deferredPrompt.prompt();
+        deferredPrompt.userChoice.then((choiceResult) => {
+            if (choiceResult.outcome === 'accepted') {
+                console.log('user accepted a2hs prompt');
+            }
+            deferredPrompt = null;
+        })
     } else {
         console.log('Go notification');
         clients.openWindow('http://imbuildings.com');
@@ -49,6 +55,8 @@ function getdata() {
 
     return data;
 }
+
+//pwa
 self.addEventListener('install', e => {
     console.log('install');
     e.waitUntil(
@@ -56,7 +64,7 @@ self.addEventListener('install', e => {
             console.log('cache');
             return cache.addAll([
                 './']);
-        })  
+        })
     )
 });
 
@@ -67,4 +75,15 @@ self.addEventListener('fetch', e => {
             return response || fetch(e.request);
         })
     )
+})
+
+
+btnAdd.addEventListener('click', e => {
+    deferredPrompt.prompt();
+    deferredPrompt.userChoice.then((choiceResult) => {
+        if (choiceResult.outcome === 'accepted') {
+            console.log('user accepted a2hs prompt');
+        }
+        deferredPrompt = null;
+    })
 })

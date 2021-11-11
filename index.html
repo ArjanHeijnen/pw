@@ -63,16 +63,12 @@
 
             //update UI Notify the user they can add to homescreen 
 
-            btnAdd.style.display = 'block';
-            btnAdd.addEventListener('click', e => {
-                deferredPrompt.prompt();
-                deferredPrompt.userChoice.then((choiceResult) => {
-                    if (choiceResult.outcome === 'accepted') {
-                        console.log('user accepted a2hs prompt');
-                    }
-                    deferredPrompt = null;
-                })
-            })           
+            btnAdd.style.display = 'block';           
+            if (confirm('There is an PWA for this site, do you with to download it?')) {
+                // Save it!
+                // cant do btn.click() want dat moet gebruiker persee doen?               
+                console.log('download button clicked');
+            }
         })
 
 
