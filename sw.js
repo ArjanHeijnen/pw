@@ -49,3 +49,34 @@ function getdata() {
 
     return data;
 }
+self.addEventListener('install', e => {
+    console.log('install');
+    e.waitUntil(
+        caches.open("static").then(cache => {
+            console.log('cache');
+            return cache.addAll([
+                './',
+                'index.js',
+                'ArrowRight.png',
+                '/icons/manifest-icon-192.maskable.png',
+                '/icons/manifest-icon-512.maskable.png',
+                '/images/ArrowLeft.png',
+                'manifest.json',
+                'favicon.ico',
+                'index.html',
+                'logoheader.png',
+                'second.html',
+                'sw.js',
+                'Uitzicht.jpg']);
+        })  
+    )
+});
+
+self.addEventListener('fetch', e => {
+    console.log(`intercepting ${e.request.url}`);
+    e.respondWith(
+        caches.match(e.request).then(response => {
+            return response || fetch(e.request);
+        })
+    )
+})

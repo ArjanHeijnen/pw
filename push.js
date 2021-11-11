@@ -13,7 +13,4 @@ push.setVapidDetails('mailto:arjan.heijnen@student.nhlstenden.com', vapidkeyes.p
 let sub = {"endpoint":"https://fcm.googleapis.com/fcm/send/esFxAY7optk:APA91bFH7qgtygJUrFvFeh9ZV_d1R4HOELJ9vbsWiDD_eXZgYotiKF_bb6BrE_t7mbJ0avUoULNt5QVjmb85fEB4PaKZPuFWSPHVOZx7zsSgvqSoCmF5y3i2_UkET1u7Y1yS7ELdVOk8","expirationTime":null,"keys":{"p256dh":"BKdoo7ewmQksrle6lLZGtw23_c8UZOHcrie7EUVxaQNRDn4fyp0Bi7gROxidvFlPOHuHfzXZZ3dRfXo6iClZ5yg","auth":"ChfUDUjoLAK0f_-UNgYNHA"}}
 
 
-
-
-
 push.sendNotification(sub, 'test message');

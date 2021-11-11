@@ -18,7 +18,21 @@
             let sw = await navigator.serviceWorker.register('./sw.js')
             console.log(sw);
         });
-
+        if ('serviceWorker' in navigator) {
+            console.log('has sw');
+            navigator.serviceWorker.register('/sw.js', {
+                scope: '/'
+            })
+            navigator.serviceWorker.getRegistrations().then(function (registrations) {
+                for (let registration of registrations) {
+                    registration.update()
+                    console.log("updated");
+                }
+            })
+            //aardig zeker dat het tot hier is            
+        } else {
+            console.log('has no sw');
+        }
         async function subscribe() {
             let sw = await navigator.serviceWorker.ready;
             navigator.serviceWorker.getRegistrations().then(function (registrations) {
@@ -26,7 +40,7 @@
                     registration.update();
                     console.log("updated");
                 }
-            })  
+            })
             let push = await sw.pushManager.subscribe({
                 userVisibleOnly: true,
                 applicationServerKey: 'BNRro0yvR4UoTCvjZr9njT28AMyfUvSuPtCF_cLlN-wm5KT7GfCEPjdOdcKc9-wYUhJkeSIVFryPb34Ts8D2R-0'//public key
