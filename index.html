@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Proof</title>
     <!--the 2 links below are needed for the PWA.-->
     <link rel="apple-touch-icon" href="icons/manifest-icon-192.maskable.png">
     <link rel="manifest" href="manifest.json">
@@ -13,116 +13,7 @@
 </head>
 
 <body>
-    <button onclick="subscribe()">
-        subscribe
-    </button>
-    <button onclick="displayNotification2()">
-        Get displayNotification
-    </button>
-    <button id="btnAdd">
-        download
-    </button>
-    <p id="pushID">here!</p>
-    <script>
-        //see if user has internet connection
-        console.log('Initially ' + (window.navigator.onLine ? 'on' : 'off') + 'line');
-        window.addEventListener('offline', () => { console.log('Became offline'); displayOffline('became') });
-        function displayOffline(t) {//---
-            alert(`u ${t} offline`);
-        }
-
-        addEventListener('load', async () => {
-            //a service worker is needed
-            let sw = await navigator.serviceWorker.register('./sw.js')
-            console.log(sw);
-            console.log('has sw');
-            navigator.serviceWorker.getRegistrations().then(function (registrations) {
-                for (let registration of registrations) {
-                    registration.update()
-                    console.log("updated");
-                }
-            })
-        });
-
-        async function subscribe() {//for the node push.js
-            let sw = await navigator.serviceWorker.ready;
-            navigator.serviceWorker.getRegistrations().then(function (registrations) {
-                for (let registration of registrations) {
-                    registration.update();
-                    console.log("updated");
-                }
-            })
-            let push = await sw.pushManager.subscribe({//for the node push.js
-                userVisibleOnly: true,
-                applicationServerKey: 'BNRro0yvR4UoTCvjZr9njT28AMyfUvSuPtCF_cLlN-wm5KT7GfCEPjdOdcKc9-wYUhJkeSIVFryPb34Ts8D2R-0'//public key
-            })
-            //the push should be saved in a db so the push can be retrieved on the push.js page 
-            // somehow link this to a user 
-            // when is needed let server find this data for the user and let it send messages
-            document.getElementById("pushID").innerHTML = JSON.stringify(push);
-            console.log(JSON.stringify(push));
-        }
-
-        //for the download of the PWA
-        let deferredPrompt;
-        let btnAdd = document.getElementById('btnAdd')
-        window.addEventListener('beforeinstallprompt', e => {
-            //prevent chrome 67 and earlier from automatically 
-            // showing prompt
-            e.preventDefault();
-            //stash the event 
-            deferredPrompt = e;
-            //update UI Notify the user they can add to homescreen 
-            hideMyInstallPromotion();
-            btnAdd.style.display = 'block';
-            // if (confirm('There is an PWA for this site, do you with to download it?')) {
-            //     // Save it!
-            //     // cant do btn.click() want dat moet gebruiker persee doen?    
-            //     //  do een zoom op de button ofzo?           
-            //     console.log('download button clicked');
-            // }
-        })
-
-        //PWA install button action
-        btnAdd.addEventListener('click', e => {
-            deferredPrompt.prompt();
-            deferredPrompt.userChoice.then((choiceResult) => {
-                if (choiceResult.outcome === 'accepted') {
-                    console.log('user accepted a2hs prompt');
-                }
-                deferredPrompt = null;
-            })
-        })
-
-        //if app is installed =>
-        window.addEventListener('appinstalled', (evt) => {
-            btnAdd.style.display = 'block';
-            hideMyInstallPromotion();
-        })
-
-        //simple notification
-        function displayNotification2() {
-            if (Notification.permission === "granted") {
-                navigator.serviceWorker.getRegistration().then(reg => {
-                    const options = {
-                        body: "Notification 2 body",
-                        icon: "images/ArrowLeft.png",
-                        vibrate: [100, 50, 100],
-                        data: { primaryKey: 2 },
-                        actions: [
-                            { action: 'Somthingelse', title: 'Go to site', icon: 'images/ArrowLeft.png' },
-                            { action: 'close', title: 'No thank u', icon: 'ArrowRight.png' }
-                        ]
-                    }
-                    reg.showNotification('Notification SDI', options);
-                });
-            }
-        }
-        function hideMyInstallPromotion(){
-            console.log('hid button download');
-            document.getElementById('btnAdd').style.visibility = 'hidden'
-        }
-    </script>
+    <t1>Marlon is Leuker dan Arjan</t1>
 </body>
 
 </html>
